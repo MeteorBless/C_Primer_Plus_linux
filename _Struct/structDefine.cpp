@@ -25,6 +25,13 @@ struct Teacher{
     Student stu; //嵌套结构体
 };
 
+void printStudent(struct Student s){
+    cout<<"name:"<<s.name<<" age:"<<s.age<<" score:"<<s.score<<endl;
+}
+void printStudent(struct Student * p){
+    cout<<"name:"<<p->name<<" age:"<<p->age<<" score:"<<p->score<<endl;
+}
+
 int main(){
     //2.通过学生类型创建具体学生
     //2.1 struct Student s1
@@ -66,5 +73,10 @@ int main(){
     t.stu.score = 60;
     cout<<t.name<<"\t"<<t.stu.name<<endl;
 
+    //结构体做函数参数
+    //将学生传入到一个函数的参数
+    printStudent(s1);
+    printStudent(&s1);
+    //结构体中用const来防止误操作
     return 0;
 }
