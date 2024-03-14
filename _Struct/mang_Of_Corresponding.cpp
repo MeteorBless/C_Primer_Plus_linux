@@ -48,6 +48,7 @@ void addPerson(struct Addressbooks *abs){
 
         cout<<"请输入联系人的姓名:";
         cin>>name;
+        abs->people[abs->m_Size].m_Name = name; 
         cout<<"请输入联系人的性别:"<<endl;
         cout<<"1---男"<<endl;
         cout<<"2---女"<<endl;
@@ -93,8 +94,6 @@ void addPerson(struct Addressbooks *abs){
         abs->m_Size++;
         cout<<"添加成功"<<endl;
     }
-    system("pause");
-    system("cls");
 }
 
 void showPerson(struct Addressbooks * abs){
@@ -110,8 +109,12 @@ void showPerson(struct Addressbooks * abs){
         }
 
     }
-    system("pause");
-    system("cls");
+
+}
+
+void cleanPerson(struct Addressbooks * abs){
+    abs->m_Size=0;
+    cout<<"通讯录已清空。"<<endl;
 
 }
 
@@ -127,6 +130,7 @@ int main(){
                 addPerson(&abs); //利用地址传递，可以修改实参
                 break;
             case 2: //显示联系人
+                showPerson(&abs);
                 break;
             case 3: //删除联系人
                 break;
@@ -135,11 +139,13 @@ int main(){
             case 5: //修改联系人
                 break;
             case 6: //删除联系人
+                cleanPerson(&abs);
                 break;
             case 0: //退出通讯录
                 cout<<"欢迎下次使用！"<<endl;
                 return 0;
-
+            system("pause");
+            system("clc");
         }
 
     }
